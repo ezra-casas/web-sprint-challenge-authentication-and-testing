@@ -8,10 +8,10 @@ beforeAll(async () => {
   await db.migrate.latest()
 })
 
+
 afterAll(async () => {
   await db.destroy()
 })
-
 describe('server.js', () => {
   describe('[POST] /api/auth/register', () => {
     it('[1] posting to register creates a new user in database', async () => {
@@ -61,3 +61,9 @@ describe('server.js', () => {
     }, 750)
   })
 })
+
+// await request(server).post('/api/auth/register')
+// .send({ username: 'jane', password: '12345' })
+// const jane = await db('users')
+//               .where('username', 'jane')
+//               .first()

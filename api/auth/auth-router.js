@@ -6,10 +6,10 @@ const { BCRYPT_ROUNDS, JWT_SECRET } = require("../secrets");
 const Users = require('./user-model.js');
 
 const restricted = require('../middleware/restricted.js')
-const checkRegister = require('../middleware/checkIfRegistered')
-const checkUniqueUsername = require('../middleware/checkUniqueUsername')
-const checkUsernameExists = require('../middleware/checkIfUsernameExists')
-
+const checkRegister = require('../middleware/checkRegister.js')
+const checkUniqueUsername = require('../middleware/checkUniqueUsername.js')
+const checkUsernameExists = require('../middleware/checkUsernameExists.js')
+ 
 router.post('/register', checkRegister, checkUniqueUsername, (req, res, next) => {
   let user = req.body
   const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS)
